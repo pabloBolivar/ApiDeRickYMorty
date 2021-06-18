@@ -35,11 +35,11 @@ export default function CharacterManager() {
   };
 
   return (
-    <React.Fracment>
+    <div>
+      <h3>Characters</h3>
       <ul>
-        <h3>Characters</h3>
         {charactersDisplayer}
       </ul>
-    </React.Fracment>
+    </div>
   );
 }

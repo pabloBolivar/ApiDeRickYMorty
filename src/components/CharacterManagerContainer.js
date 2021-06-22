@@ -2,16 +2,16 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import * as charactersActions from "../actions/charactersActions";
-import CharacterManager from "./components/CharacterManager";
+import CharacterManager from "./CharacterManager";
 
 function CharacterManagerContainer(props) {
   useEffect(() => {
-    return props.pullCharacters;
-  });
+    return props.pullCharacters();
+  }, []);
 
-  const charactersDisplayer = () => {
-    if (props.store.characters.length > 0) {
-      return props.store.characters.map((character) => {
+  function charactersDisplayer() {
+    if (props.characters.length > 0) {
+      return props.characters.map((character) => {
         return (
           <li key={character.id.toString()}>
             <img src={character.image} alt={`avatar de ${character.name}`} />
@@ -23,13 +23,13 @@ function CharacterManagerContainer(props) {
         );
       });
     }
-  };
+  }
 
   return <CharacterManager displayer={charactersDisplayer} />;
 }
 
-const mapStateToProps = (reducers) => {
-  return reducers.charactersReducer;
+const mapStateToProps = (store) => {
+  return store.charactersReducer;
 };
 
 export default connect(

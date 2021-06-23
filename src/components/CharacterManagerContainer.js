@@ -13,7 +13,7 @@ function CharacterManagerContainer(props) {
     if (props.characters.length > 0) {
       return props.characters.map((character) => {
         return (
-          <li key={character.id.toString()}>
+          <li key={character.id.toString()} className="character-item">
             <img src={character.image} alt={`avatar de ${character.name}`} />
             <h4>{character.name}</h4>
             <p>Species: {character.species}</p>

@@ -1,5 +1,7 @@
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
+import "bootstrap-css";
+import "./styles.css";
 
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";

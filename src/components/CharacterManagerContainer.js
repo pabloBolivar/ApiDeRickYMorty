@@ -6,8 +6,10 @@ import CharacterManager from "./CharacterManager";
 
 function CharacterManagerContainer(props) {
   useEffect(() => {
-    return props.pullCharacters();
-  }, []);
+    if (!props.characters.length > 0) {
+      return props.pullCharacters();
+    }
+  });
 
   function charactersDisplayer() {
     if (props.characters.length > 0) {

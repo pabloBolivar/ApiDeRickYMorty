@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import * as charactersActions from "../actions/charactersActions";
 import CharacterManager from "./CharacterManager";
 import Loader from "./Loader/Loader";
+import Error from "./Error/Error";
 
 function CharacterManagerContainer(props) {
   useEffect(() => {
@@ -26,12 +27,19 @@ function CharacterManagerContainer(props) {
     }
   }
 
-  if (props.loading) {
-    return <Loader />;
-  }
-  return <CharacterManager displayer={charactersDisplayer} />;
+  const resultDisplayer = () => {
+    if (props.loading) {
+      return <Loader />;
+    }
+    if (props.error) {
+      return <Error />;
+    }
+    return <CharacterManager displayer={charactersDisplayer} />;
+  };
+
+  return resultDisplayer();
 }
-//
+
 const mapStateToProps = (store) => {
   return store.charactersReducer;
 };

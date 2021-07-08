@@ -1,6 +1,6 @@
-import { FETCH_CHARACTERS, LOADING } from "../charactersTypes";
-
-const INITIAL_STATE = { characters: [], loading: false };
+import { FETCH_CHARACTERS, LOADING, ERROR } from "../charactersTypes";
+//
+const INITIAL_STATE = { loading: false, error: null, characters: [] };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -10,7 +10,9 @@ export default (state = INITIAL_STATE, action) => {
         loading: false,
       };
     case LOADING:
-      return { ...state, loading: true };
+      return { ...state, loading: true, error: null };
+    case ERROR:
+      return { ...state, error: action.payload };
     default:
       return state;
   }

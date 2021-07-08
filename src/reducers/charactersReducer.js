@@ -1,5 +1,5 @@
 import { FETCH_CHARACTERS, LOADING, ERROR } from "../charactersTypes";
-//
+
 const INITIAL_STATE = { loading: false, error: null, characters: [] };
 
 export default (state = INITIAL_STATE, action) => {

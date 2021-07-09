@@ -11,7 +11,7 @@ function CharacterManagerContainer(props) {
     if (!props.characters.length > 0) {
       return props.pullCharacters();
     }
-  });
+  }, []);
 
   function charactersDisplayer() {
     if (props.characters.length > 0) {
@@ -34,7 +34,7 @@ function CharacterManagerContainer(props) {
       return <Loader />;
     }
     if (props.error) {
-      return <Error />;
+      return <Error message={props.error} />;
     }
     return <CharacterManager displayer={charactersDisplayer} />;
   };

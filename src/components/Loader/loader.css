@@ -5,14 +5,14 @@
   grid-template:
     "i1 i2 i3" 18px
     "i4 .  i5" 18px
-    "i6 i7 i8" 18px / repeat(3, 18px);
+    "i6 i7 i8" 18px / 18px 18px 18px;
   gap: 1px;
   justify-content: center;
   align-content: center;
   justify-items: center;
 }
 
-div div {
+.loader-container div {
   background-color: rgba(210, 210, 210, 0.7);
   border-radius: 3px;
   width: 5.2px;
@@ -97,4 +97,3 @@ div div {
   transform: rotate(-45deg);
   animation: alternal 3.2s linear 1.6s infinite;
 }
-/* b: 0;h1 {b: 0}, tr */

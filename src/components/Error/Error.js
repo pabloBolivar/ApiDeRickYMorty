@@ -17,7 +17,7 @@ export default function ErrorPage(props) {
         <h2>Opss!</h2>
         <h3>A error has ocurred</h3>
       </span>
-      <p>Error: {props.error.message}</p>
+      <p>Error: {props.message}</p>
     </div>
   );
 }

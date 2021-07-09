@@ -6,13 +6,14 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case FETCH_CHARACTERS:
       return {
+        ...state,
         characters: [...state.characters, ...action.payload],
-        loading: false,
+        loading: false
       };
     case LOADING:
       return { ...state, loading: true, error: null };
     case ERROR:
-      return { ...state, error: action.payload };
+      return { ...state, loading: false, error: action.payload };
     default:
       return state;
   }

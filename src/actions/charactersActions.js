@@ -7,12 +7,13 @@ export const pullCharacters = () => async (dispatch) => {
     const response = await request.json();
     dispatch({
       type: FETCH_CHARACTERS,
-      payload: response.results,
+      payload: response.results
     });
   } catch (error) {
+    console.log(error);
     dispatch({
       type: ERROR,
-      payload: error.message + "Por favor, inténtelo un poco más tarde",
+      payload: `${error}. Por favor, inténtelo un poco más tarde`
     });
   }
 };

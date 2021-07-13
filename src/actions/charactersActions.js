@@ -5,15 +5,19 @@ export const pullCharacters = () => async (dispatch) => {
   try {
     const request = await fetch("https://rickandmortyapi.com/api/character");
     const response = await request.json();
-    dispatch({
-      type: FETCH_CHARACTERS,
-      payload: response.results
-    });
+    response.results instanceof Array
+      ? dispatch({
+          type: FETCH_CHARACTERS,
+          payload: response.results,
+        })
+      : dispatch({
+          type: ERROR,
+          payload: `${response.error}. Please, try it later`
+        });
   } catch (error) {
-    console.log(error);
     dispatch({
       type: ERROR,
-      payload: `${error}. Por favor, inténtelo un poco más tarde`
+      payload: `${error}. Please, try it again later`
     });
   }
 };

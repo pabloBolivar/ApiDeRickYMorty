@@ -1,0 +1,79 @@
+.error-container {
+  min-height: 80vh;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.illustration {
+  padding: 3px 3px;
+  width: 96px;
+  height: 102px;
+  border-radius: 9px;
+  background-color: #a8a8fe;
+  display: inline-grid;
+  grid-template:
+    ".  o  . " 24px
+    "cb cb cb" 24px
+    "l1 .  l2" 24px
+    "l1 .  l2" 24px / 33px 24px 33px;
+}
+
+.circle {
+  grid-area: o;
+  width: 24px;
+  height: 24px;
+  background-color: #f00;
+  border-radius: 12px;
+}
+
+.circle div {
+  width: 18px;
+  height: 6px;
+  margin: 9px auto;
+  background-color: #fff;
+}
+
+.colored-bar {
+  grid-area: cb;
+  width: 90px;
+  height: 24px;
+  background: repeating-linear-gradient(-45deg, #fff 0 10px, #fe3c00 10px 20px);
+}
+
+.leg {
+  height: 48px;
+  width: 14px;
+  background: linear-gradient(#fff 6px, #fe3c00 6px 12px, #fff 12px);
+}
+
+.l1 {
+  grid-area: l1;
+  position: relative;
+  left: 10px;
+}
+
+.l2 {
+  grid-area: l2;
+  position: relative;
+  right: -9px;
+}
+
+.error-title {
+  display: inline-block;
+  margin-inline-start: 25px;
+}
+
+.error-title h2 {
+  padding-inline-start: 6px;
+  font-size: 2.6rem;
+}
+
+.error-container p {
+  width: 100%;
+  margin-block-start: 15px;
+  text-align: center;
+}

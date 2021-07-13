@@ -2,44 +2,35 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import * as charactersActions from "../actions/charactersActions";
-import CharacterManager from "./CharacterManager";
+import CharacterItems from "./CharacterItems";
 import Loader from "./Loader/Loader";
 import Error from "./Error/Error";
 
 function CharacterManagerContainer(props) {
   useEffect(() => {
-    if (!props.characters.length > 0) {
-      return props.pullCharacters();
-    }
+    props.pullCharacters();
   }, []);
 
-  function charactersDisplayer() {
-    if (props.characters.length > 0) {
-      return props.characters.map((character) => {
-        return (
-          <li key={character.id.toString()} className="character-item">
-            <img src={character.image} alt={`avatar de ${character.name}`} />
-            <h4>{character.name}</h4>
-            <p>Species: {character.species}</p>
-            <p>Gender: {character.gender}</p>
-            <p>Planet: {character.origin.name}</p>
-          </li>
-        );
-      });
-    }
+  if (props.loading) {
+    return <Loader />;
+  }
+  if (props.error) {
+    return <Error message={props.error} />;
   }
 
-  const resultDisplayer = () => {
-    if (props.loading) {
-      return <Loader />;
-    }
-    if (props.error) {
-      return <Error message={props.error} />;
-    }
-    return <CharacterManager displayer={charactersDisplayer} />;
-  };
-
-  return resultDisplayer();
+  return (
+    <div>
+      {props.characters && props.characters.length > 0 ? (
+        <ul className="character-container">
+          {props.characters.map((character, i) => {
+            return <CharacterItems Key={i} character={character} />;
+          })}
+        </ul>
+      ) : (
+        <h3> No hay personajes. </h3>
+      )}
+    </div>
+  );
 }
 
 const mapStateToProps = (store) => {

@@ -6,7 +6,7 @@ import CharacterItems from "./CharacterItems";
 import Loader from "./Loader/Loader";
 import Error from "./Error/Error";
 
-function CharacterManagerContainer(props) {
+function CharacterItemsContainer(props) {
   useEffect(() => {
     props.pullCharacters();
   }, []);
@@ -40,4 +40,4 @@ const mapStateToProps = (store) => {
 export default connect(
   mapStateToProps,
   charactersActions
-)(CharacterManagerContainer);
+)(CharacterItemsContainer);

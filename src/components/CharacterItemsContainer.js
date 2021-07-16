@@ -1,28 +1,35 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import * as charactersActions from "../actions/charactersActions";
 import CharacterItems from "./CharacterItems";
 import Loader from "./Loader/Loader";
 import Error from "./Error/Error";
-
-function CharacterItemsContainer(props) {
+//
+export default function CharacterItemsContainer(props) {
+  const characters = useSelector((state) => state.characters);
+  const stateLoading = useSelector((state) => state.loading);
+  const stateError = useSelector((state) => state.error);
+  const actions = useDispatch();
+  console.log(actions);
   useEffect(() => {
     props.pullCharacters();
   }, []);
 
-  if (props.loading) {
+  if (stateLoading) {
     return <Loader />;
   }
-  if (props.error) {
+  if (stateError) {
     return <Error message={props.error} />;
   }
 
   return (
     <div>
-      {props.characters && props.characters.length > 0 ? (
+      {characters && characters.length > 0 ? (
         <ul className="character-container">
-          {props.characters.map((character, i) => {
+          {characters.map((character, i) => {
             return <CharacterItems Key={i} character={character} />;
           })}
         </ul>
@@ -32,12 +39,3 @@ function CharacterItemsContainer(props) {
     </div>
   );
 }
-
-const mapStateToProps = (store) => {
-  return store.charactersReducer;
-};
-
-export default connect(
-  mapStateToProps,
-  charactersActions
-)(CharacterItemsContainer);

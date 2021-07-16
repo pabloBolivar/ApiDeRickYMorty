@@ -7,7 +7,7 @@ export default (state = INITIAL_STATE, action) => {
     case FETCH_CHARACTERS:
       return {
         ...state,
-        characters: [...state.characters, ...action.payload],
+        characters: [...action.payload],
         loading: false
       };
     case LOADING:

@@ -1,4 +1,4 @@
-import { FETCH_CHARACTERS, LOADING, ERROR } from "../charactersTypes";
+import { FETCH_CHARACTERS, LOADING, ERROR } from "../types";
 
 export const pullCharacters = () => async (dispatch) => {
   dispatch({ type: LOADING });
@@ -8,7 +8,7 @@ export const pullCharacters = () => async (dispatch) => {
     response.results instanceof Array
       ? dispatch({
           type: FETCH_CHARACTERS,
-          payload: response.results,
+          payload: response.results
         })
       : dispatch({
           type: ERROR,

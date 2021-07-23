@@ -37,9 +37,13 @@ h4 {
 .character-item {
   justify-self: center;
   align-self: center;
+  padding: 20px;
   text-align: center;
-  max-width: 350px;
-  max-height: 490px;
+  max-width: 390px;
+  max-height: 530px;
+  background-color: #f7f9fc;
+  border: 1.5px solid #e6e6e6;
+  border-radius: 5px;
 }
 
 img {

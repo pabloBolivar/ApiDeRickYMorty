@@ -4,7 +4,7 @@ import "bootstrap-css";
 import "./styles.css";
 
 import { Provider } from "react-redux";
-import { store } from "./Redux/store";
+import { store } from "./redux/store";
 
 import CharacterItemsContainer from "./components/CharacterItemsContainer";
 

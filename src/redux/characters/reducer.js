@@ -1,4 +1,4 @@
-import { FETCH_CHARACTERS, LOADING, ERROR } from "../types/types";
+import { FETCH_CHARACTERS, LOADING, ERROR } from "./types";
 
 const INITIAL_STATE = { loading: false, error: null, characters: [] };
 
